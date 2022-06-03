@@ -1,0 +1,54 @@
+<h2 class="content-block">현재 상영중인 영화</h2>
+
+<div class="content-block dx-card responsive-paddings">
+  <div class="form-avatar">
+    <img src="{{Picture}}"/>
+  </div>
+  <div class="form-button">
+    <button clss="right-button"  (click)="clickedModal()">빠른예매</button>
+  </div>
+  <h3>{{movie.title}}</h3>
+  <span>상영시간 : {{movie.runningTime}}</span><br>
+  <span>감독 : {{movie.director}}</span><br>
+  <span>출연 : {{movie.cast}}</span><br>
+  <span>관람등급 : {{movie.grade}}</span><br>
+
+  <hr>
+  <span>{{movie.information}}</span>
+
+</div>
+<div class="content-block dx-card responsive-paddings">
+  <div class="form-avatar">
+    <img src="{{Picture2}}"/>
+  </div>
+  <div class="form-button">
+    <button clss="right-button">빠른예매</button>
+  </div>
+  <h3>{{movie2.title}}</h3>
+  <span>상영시간 : {{movie2.runningTime}}</span><br>
+  <span>감독 : {{movie2.director}}</span><br>
+  <span>출연 : {{movie2.cast}}</span><br>
+  <span>관람등급 : {{movie2.grade}}</span><br>
+  <hr>
+  <span>{{movie2.information}}</span>
+</div>
+
+<!-- Modal -->
+<div [ngClass]="modal ? 'modal fade show d-block' : 'modal fade'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" (click)="clickedModalClose()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>body</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="clickedModalClose()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
