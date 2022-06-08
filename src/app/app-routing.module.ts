@@ -8,6 +8,8 @@ import {
 } from './shared/components';
 import {AuthGuardService} from './shared/services';
 import {HomeComponent} from './pages/home/home.component';
+import {MovieComponent} from './pages/movies/movie.component';
+import {MovieEditComponent} from './pages/movies/edit/movie-edit.component';
 import {ProfileComponent} from './pages/profile/profile.component';
 import {TasksComponent} from './pages/tasks/tasks.component';
 import {DevExtremeModule} from 'devextreme-angular';
@@ -34,6 +36,11 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'movies',
+    component: MovieComponent,
     canActivate: [ AuthGuardService ]
   },
   {
@@ -68,6 +75,8 @@ const routes: Routes = [
   exports: [RouterModule],
   declarations: [
     HomeComponent,
+    MovieComponent,
+    MovieEditComponent,
     ProfileComponent,
     TasksComponent,
     EmployeeComponent,

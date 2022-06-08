@@ -21,5 +21,24 @@ export const navigation = [
         path: '/employee'
       }
     ]
+  },
+  {
+    text: '영화',
+    icon: 'home',
+    items: [
+      {
+        text: '영화 관리',
+        path: '/movies'
+      }/*,
+      {
+        text: '예매',
+        path: '/tasks'
+      }*/
+    ]
+  },
+  {
+    text: '예매',
+    path: '/schedule',
+    icon: 'floppy'
   }
 ];

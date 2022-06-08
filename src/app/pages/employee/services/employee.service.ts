@@ -6,6 +6,7 @@ import {Pageable} from "../../../shared/services/pageable.service";
 export interface Employee {
   id: number;
   name: string;
+  nickname: string;
   gender: string;
   birthDate: string | number | Date;
 }

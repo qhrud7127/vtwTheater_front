@@ -12,6 +12,8 @@ const defaultUser = {
   avatarUrl: 'https://js.devexpress.com/Demos/WidgetsGallery/JSDemos/images/employees/06.png'
 };
 
+const URL = '/dna/practice/iuser';
+
 @Injectable()
 export class AuthService {
   private _user: IUser | null = defaultUser;

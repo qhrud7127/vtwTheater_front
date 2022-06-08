@@ -1,7 +1,7 @@
 <form class="login-form" (submit)="onSubmit($event)">
   <dx-form [formData]="formData" [disabled]="loading">
 
-    <dxi-item dataField="email" editorType="dxTextBox"
+    <dxi-item dataField="userId" editorType="dxTextBox"
       [editorOptions]="{ stylingMode: 'filled', placeholder: 'Email', mode: 'email' }">
       <dxi-validation-rule type="required" message="Email is required"></dxi-validation-rule>
       <dxi-validation-rule type="email" message="Email is invalid"></dxi-validation-rule>

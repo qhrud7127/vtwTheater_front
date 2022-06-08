@@ -43,6 +43,15 @@
         </div>
 
         <div class="dx-field">
+          <div class="dx-field-label">별명</div>
+          <dx-text-box class="dx-field-value" [(value)]="employee.nickname">
+            <dx-validator>
+              <dxi-validation-rule type="required" message="별명을 입력하세요."></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-box>
+        </div>
+
+        <div class="dx-field">
           <div class="dx-field-label">성별</div>
           <dx-select-box class="dx-field-value"
                          name="gender" [(value)]="employee.gender"
