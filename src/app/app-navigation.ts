@@ -23,22 +23,26 @@ export const navigation = [
     ]
   },
   {
-    text: '영화',
+    text: '영화관 관리',
     icon: 'home',
     items: [
       {
         text: '영화 관리',
         path: '/movies'
-      }/*,
+      },
       {
-        text: '예매',
-        path: '/tasks'
-      }*/
+        text: '영화관 관리',
+        path: '/theater'
+      },
+      {
+        text: '스케줄 관리',
+        path: '/schedule'
+      }
     ]
   },
   {
     text: '예매',
-    path: '/schedule',
+    path: '/reservation',
     icon: 'floppy'
   }
 ];

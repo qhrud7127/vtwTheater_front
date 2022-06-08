@@ -1,4 +1,4 @@
-<h2 class="content-block">영화정보 관리</h2>
+<h2 class="content-block">영화 상영시간표 관리</h2>
 
 <div class="list-container">
   <div class="crud-buttons">
@@ -17,31 +17,30 @@
     <dx-button
       class="crud-button"
       text="변경"
-      [disabled]="!getSelectedMovieId()"
+      [disabled]="!getSelectedScheduleSeq()"
       (onClick)="update()"
     ></dx-button>
     <dx-button
       class="crud-button"
       text="삭제"
-      [disabled]="!getSelectedMovieId()"
+      [disabled]="!getSelectedScheduleSeq()"
       (onClick)="delete()"
     ></dx-button>
   </div>
 
   <dx-data-grid
-    [dataSource]="movie"
+    [dataSource]="schedule"
     [showBorders]="true"
     [remoteOperations]="true"
     [hoverStateEnabled]="true"
     [selectedRowKeys]="[]"
   >
-    <dxi-column dataField="movieId" dataType="number" caption="ID" [width]="100"></dxi-column>
-    <dxi-column dataField="director" dataType="string" caption="감독"></dxi-column>
-    <dxi-column dataField="title" dataType="string" caption="제목"></dxi-column>
-    <dxi-column dataField="cast" dataType="string" caption="출연진"></dxi-column>
-    <dxi-column dataField="grade" dataType="string" caption="관람등급"></dxi-column>
-    <dxi-column dataField="information" dataType="string" caption="영화설명"></dxi-column>
-    <dxi-column dataField="runningTime" dataType="string" caption="상영시간"></dxi-column>
+    <dxi-column dataField="scheduleSeq" dataType="number" caption="ID" [width]="100"></dxi-column>
+    <dxi-column dataField="theaterId" dataType="number" caption="theaterId"></dxi-column>
+    <dxi-column dataField="movieId" dataType="number" caption="movieId"></dxi-column>
+    <dxi-column dataField="time" dataType="datetime" caption="time"></dxi-column>
+    <dxi-column dataField="seats" dataType="number" caption="seats"></dxi-column>
+    <dxi-column dataField="fee" dataType="number" caption="fee"></dxi-column>
     <dxo-selection mode="single"></dxo-selection>
     <dxo-paging [pageSize]="10"></dxo-paging>
     <dxo-pager
@@ -53,4 +52,4 @@
   </dx-data-grid>
 </div>
 
-<sample-movie-edit-popup (onSaved)="onSaved($event)"></sample-movie-edit-popup>
+<sample-schedule-edit-popup (onSaved)="onSaved($event)"></sample-schedule-edit-popup>

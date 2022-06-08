@@ -10,12 +10,16 @@ import {AuthGuardService} from './shared/services';
 import {HomeComponent} from './pages/home/home.component';
 import {MovieComponent} from './pages/movies/movie.component';
 import {MovieEditComponent} from './pages/movies/edit/movie-edit.component';
+import {TheaterComponent} from './pages/theater/theater.component';
+import {TheaterEditComponent} from './pages/theater/edit/theater-edit.component';
+import {ScheduleComponent} from './pages/schedule/schedule.component';
+import {ScheduleEditComponent} from './pages/schedule/edit/schedule-edit.component';
 import {ProfileComponent} from './pages/profile/profile.component';
 import {TasksComponent} from './pages/tasks/tasks.component';
 import {DevExtremeModule} from 'devextreme-angular';
 import {EmployeeComponent} from "./pages/employee/employee.component";
-import {CommonModule} from "@angular/common";
 import {EmployeeEditComponent} from "./pages/employee/edit/employee-edit.component";
+import {CommonModule} from "@angular/common";
 
 const routes: Routes = [
   {
@@ -41,6 +45,16 @@ const routes: Routes = [
   {
     path: 'movies',
     component: MovieComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'theater',
+    component: TheaterComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'schedule',
+    component: ScheduleComponent,
     canActivate: [ AuthGuardService ]
   },
   {
@@ -77,6 +91,10 @@ const routes: Routes = [
     HomeComponent,
     MovieComponent,
     MovieEditComponent,
+    TheaterComponent,
+    TheaterEditComponent,
+    ScheduleComponent,
+    ScheduleEditComponent,
     ProfileComponent,
     TasksComponent,
     EmployeeComponent,

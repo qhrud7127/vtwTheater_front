@@ -1,0 +1,111 @@
+<h2 class="content-block">영화관 정보 관리</h2>
+
+<div class="list-container">
+  <div class="crud-buttons">
+    <dx-text-box [(value)]="filter" class="search-bar" placeholder="영화관 이름으로 조회" (onEnterKey)="search()">
+    </dx-text-box>
+    <dx-button
+      class="crud-button"
+      text="조회"
+      (onClick)="search()"
+    ></dx-button>
+    <dx-button
+      class="crud-button"
+      text="생성"
+      (onClick)="create()"
+    ></dx-button>
+    <dx-button
+      class="crud-button"
+      text="변경"
+      [disabled]="!getSelectedTheaterId()"
+      (onClick)="update()"
+    ></dx-button>
+    <dx-button
+      class="crud-button"
+      text="삭제"
+      [disabled]="!getSelectedTheaterId()"
+      (onClick)="delete()"
+    ></dx-button>
+  </div>
+
+  <dx-data-grid
+    [dataSource]="theater"
+    [showBorders]="true"
+    [remoteOperations]="true"
+    [hoverStateEnabled]="true"
+    [selectedRowKeys]="[]"
+  >
+    <dxi-column dataField="theaterId" dataType="number" caption="ID" [width]="100"></dxi-column>
+    <dxi-column dataField="theaterNm" dataType="string" caption="영화관명"></dxi-column>
+    <dxi-column dataField="address" dataType="string" caption="영화관위치"></dxi-column>
+    <dxo-selection mode="single"></dxo-selection>
+    <dxo-paging [pageSize]="10"></dxo-paging>
+    <dxo-pager
+      [showPageSizeSelector]="true"
+      [allowedPageSizes]="[5, 10, 20]"
+      [showInfo]="true"
+      [visible]="true"
+    ></dxo-pager>
+  </dx-data-grid>
+</div>
+<!--
+<div class="widget-container">
+  <dx-file-uploader
+    #fileUploader
+    uploadUrl="https://js.devexpress.com/Demos/NetCore/FileUploader/Upload"
+    [multiple]="false"
+    accept="*"
+    [(value)]="value"
+    uploadMode="instantly"
+  ></dx-file-uploader>
+  <div class="content">
+    <div *ngIf="value.length > 0">
+      <h4>Selected Files</h4>
+    </div>
+    <div *ngFor="let file of value">
+      <div class="selected-item">
+        Name:
+        <span>{{ file.name }}</span
+        ><br />
+        Size: <span>{{ file.size }}</span
+      >bytes<br />
+        Type: <span>{{ file.type }}</span
+      ><br />
+        Last Modified Date:
+        <span>{{ file.lastModifiedDate }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="options">
+  <div class="caption">Options</div>
+  <div class="option">
+    <span>File types</span>
+    <dx-select-box
+      [dataSource]="[
+        { name: 'All types', value: '*' },
+        { name: 'Images', value: 'image/*' },
+        { name: 'Videos', value: 'video/*' }
+      ]"
+      valueExpr="value"
+      displayExpr="name"
+      [(value)]="fileUploader.accept"
+    ></dx-select-box>
+  </div>
+  <div class="option">
+    <span>Upload mode</span>
+    <dx-select-box
+      [items]="['instantly', 'useButtons']"
+      [(value)]="fileUploader.uploadMode"
+    ></dx-select-box>
+  </div>
+  <div class="option">
+    <dx-check-box
+      text="Allow multiple files selection"
+      [(value)]="fileUploader.multiple"
+    ></dx-check-box>
+  </div>
+</div>
+-->
+
+<sample-theater-edit-popup (onSaved)="onSaved($event)"></sample-theater-edit-popup>

@@ -1,0 +1,59 @@
+<dx-popup
+  [width]="500"
+  [height]="500"
+  [showTitle]="true"
+  [title]="isCreateMode() ? '직원 생성' : '직원 변경'"
+  [dragEnabled]="false"
+  [closeOnOutsideClick]="true"
+  [showCloseButton]="true"
+  container=".dx-viewport"
+  [(visible)]="popupVisible"
+>
+  <dxi-toolbar-item
+    widget="dxButton"
+    toolbar="bottom"
+    location="before"
+    [options]="{text: '저장', onClick: save}"
+  >
+  </dxi-toolbar-item>
+  <dxi-toolbar-item
+    widget="dxButton"
+    toolbar="bottom"
+    location="before"
+    [options]="{text: '취소', onClick: cancel}"
+  >
+  </dxi-toolbar-item>
+  <div class="popup-edit-form" *dxTemplate="let data of 'content'">
+    <dx-validation-group>
+      <div class="dx-fieldset">
+        <div class="dx-fieldset-header">기본정보</div>
+
+        <div class="dx-field" *ngIf="isUpdateMode()">
+          <div class="dx-field-label">ID</div>
+          <div class="dx-field-value-static">{{theater.theaterId}}</div>
+        </div>
+
+        <div class="dx-field">
+          <div class="dx-field-label">이름</div>
+          <dx-text-box class="dx-field-value" [(value)]="theater.theaterNm">
+            <dx-validator>
+              <dxi-validation-rule type="required" message="이름을 입력하세요."></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-box>
+        </div>
+
+        <div class="dx-field">
+          <div class="dx-field-label">위치</div>
+          <dx-text-box class="dx-field-value" [(value)]="theater.address">
+            <dx-validator>
+              <dxi-validation-rule type="required" message="별명을 입력하세요."></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-box>
+        </div>
+        <dx-validation-summary></dx-validation-summary>
+
+      </div>
+    </dx-validation-group>
+  </div>
+
+</dx-popup>
