@@ -10,6 +10,7 @@ import {PageableService} from "../../shared/services/pageable.service";
 import {ScheduleEditComponent} from "./edit/schedule-edit.component";
 import {DxDataGridComponent} from "devextreme-angular";
 
+
 @Component({
   selector: 'sample-schedule',
   providers: [ScheduleService, PageableService],
@@ -34,7 +35,6 @@ export class ScheduleComponent {
 
           const pageable = this.pageableService.getPageable(loadOptions);
           pageable.filter = this.filter;
-
           return firstValueFrom(this.scheduleService.list(pageable)).then(page => {
             return this.pageableService.transformPage(page);
           });

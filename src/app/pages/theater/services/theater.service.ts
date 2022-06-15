@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams, HttpParamsOptions} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Pageable} from "../../../shared/services/pageable.service";
+import {Movie} from "../../movies/services/movie.service";
 
 export interface Theater {
   theaterId: number;
@@ -24,6 +25,10 @@ export class TheaterService {
 
   find(theaterId: number): Observable<Theater> {
     return this.http.get<any>(`${URL}/${theaterId}`);
+  }
+
+  theaterList(): Observable<Theater> {
+    return this.http.get<any>(`${URL}/seqList`);
   }
 
   create(theater: Theater): Observable<Theater> {

@@ -1,0 +1,67 @@
+<dx-popup
+  [width]="500"
+  [height]="700"
+  [showTitle]="true"
+  [title]="isCreateMode() ? '영화 예매' : '영화 예매'"
+  [dragEnabled]="false"
+  [closeOnOutsideClick]="true"
+  [showCloseButton]="true"
+  container=".dx-viewport"
+  [(visible)]="popupVisible"
+>
+  <dxi-toolbar-item
+    widget="dxButton"
+    toolbar="bottom"
+    location="before"
+    [options]="{text: '저장', onClick: confirm}"
+  >
+  </dxi-toolbar-item>
+  <dxi-toolbar-item
+    widget="dxButton"
+    toolbar="bottom"
+    location="before"
+    [options]="{text: '취소', onClick: cancel}"
+  >
+  </dxi-toolbar-item>
+  <div class="popup-edit-form" *dxTemplate="let data of 'content'">
+      <div class="dx-fieldset">
+        <div class="dx-fieldset-header">기본정보</div>
+
+        <div class="dx-field" *ngIf="isUpdateMode()">
+          <div class="dx-field-label">ID</div>
+          <div class="dx-field-value-static">{{reservation.reservationSeq}}</div>
+        </div>
+        <div class="dx-field">
+          <div class="dx-field-label">영화관선택</div>
+          <dx-select-box class="dx-field-value"
+                         #Schedule
+                         name="theaters" [(value)]="reservation.scheduleSeq"
+                         [items]= selectedSchedule [searchEnabled]="true" valueExpr="scheduleSeq" displayExpr="time"
+          ></dx-select-box>
+        </div>
+        <div class="dx-field">
+          <div class="dx-field-label">예약매수</div>
+          <dx-number-box class="dx-field-value" [(value)]="reservation.seat"></dx-number-box>
+        </div>
+        <div class="dx-field">
+          <div class="dx-field-label">예약자명</div>
+          <dx-text-box class="dx-field-value" [(value)]="reservation.name"></dx-text-box>
+        </div>
+
+        <div class="dx-field">
+          <div class="dx-field-label">예매비밀번호</div>
+          <dx-text-box class="dx-field-value" [(value)]="reservation.password"></dx-text-box>
+        </div>
+        <div class="dx-field">
+          <div class="dx-field-label">휴대폰번호</div>
+          <dx-text-box class="dx-field-value" [(value)]="reservation.phone"></dx-text-box>
+        </div>
+
+        <div class="dx-field">
+          <div class="dx-field-label">생년월일</div>
+          <dx-text-box class="dx-field-value" [(value)]="reservation.birth"></dx-text-box>
+        </div>
+      </div>
+  </div>ㄴ
+
+</dx-popup>

@@ -1,0 +1,28 @@
+.form-avatar {
+  float: left;
+  height: 160px;
+  width: 115px;
+  margin-right: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+  overflow: hidden;
+
+  img {
+    height: 160px;
+    display: block;
+    margin: 0 ;
+  }
+
+}
+.form-button{
+  float: right;
+  height: 160px;
+  width: 115px;
+  button {
+    float: right;
+  }
+}
+

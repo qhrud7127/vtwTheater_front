@@ -1,0 +1,44 @@
+<h2 class="content-block">영화정보 관리</h2>
+
+<div class="list-container">
+  <div class="crud-buttons">
+    <dx-text-box [(value)]="filter" class="search-bar" placeholder="이름으로 조회" (onEnterKey)="search()">
+    </dx-text-box>
+    <dx-button
+      class="crud-button"
+      text="조회"
+      (onClick)="search()"
+    ></dx-button>
+    <dx-button
+      class="crud-button"
+      text="삭제"
+      [disabled]="!getSelectedreservationSeq()"
+      (onClick)="delete()"
+    ></dx-button>
+  </div>
+
+  <dx-data-grid
+    [dataSource]="reservation"
+    [showBorders]="true"
+    [remoteOperations]="true"
+    [hoverStateEnabled]="true"
+    [selectedRowKeys]="[]"
+  >
+    <dxi-column dataField="reservationSeq" dataType="number" caption="ID" [width]="50"></dxi-column>
+    <dxi-column dataField="schedule.movie.title" dataType="string" caption="영화" [width]="450"></dxi-column>
+    <dxi-column dataField="schedule.theater.theaterNm" dataType="string" caption="영화관" [width]="150"></dxi-column>
+    <dxi-column dataField="schedule.time" dataType="datetime" caption="상영시간" [width]="200"></dxi-column>
+    <dxi-column dataField="name" dataType="string" caption="예약자명"></dxi-column>
+    <dxi-column dataField="phone" dataType="string" caption="예약자번호"[width]="200"></dxi-column>
+    <dxi-column dataField="birth" dataType="string" caption="생년월일"></dxi-column>
+    <dxi-column dataField="seat" dataType="number" caption="예약매수" [width]="100"></dxi-column>
+    <dxo-selection mode="single"></dxo-selection>
+    <dxo-paging [pageSize]="10"></dxo-paging>
+    <dxo-pager
+      [showPageSizeSelector]="true"
+      [allowedPageSizes]="[5, 10, 20]"
+      [showInfo]="true"
+      [visible]="true"
+    ></dxo-pager>
+  </dx-data-grid>
+</div>

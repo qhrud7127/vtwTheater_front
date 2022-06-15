@@ -2,40 +2,38 @@ import {Component, ViewChild} from '@angular/core';
 import 'devextreme/data/odata/store';
 import DataSource from "devextreme/data/data_source";
 import CustomStore from "devextreme/data/custom_store";
-import {Movie, MovieService} from "./services/movie.service";
 import notify from "devextreme/ui/notify";
 import {confirm} from "devextreme/ui/dialog";
 import {firstValueFrom} from "rxjs";
-import {PageableService} from "../../shared/services/pageable.service";
-import {MovieEditComponent} from "./edit/movie-edit.component";
 import {DxDataGridComponent} from "devextreme-angular";
+import {ReservationService} from "../services/reservation.service";
+import {PageableService} from "../../../shared/services/pageable.service";
 
 @Component({
   selector: 'sample-movies',
-  providers: [MovieService, PageableService],
-  templateUrl: 'movie.component.html'
+  providers: [ReservationService, PageableService],
+  templateUrl: 'reservation-list.component.html'
 })
 
-export class MovieComponent {
+export class ReservationListComponent {
 
-  movie: DataSource;
+  reservation: DataSource;
   filter = '';
 
   @ViewChild(DxDataGridComponent, {static: false}) grid: DxDataGridComponent;
-  @ViewChild(MovieEditComponent, {static: false}) editPopup: MovieEditComponent;
 
-  constructor(private movieService: MovieService,
+  constructor(private reservationService: ReservationService,
               private pageableService: PageableService) {
-    this.movie = new DataSource({
+    this.reservation = new DataSource({
       store: new CustomStore({
-        key: 'movieId',
+        key: 'reservationSeq',
         load: (loadOptions) => {
           this.grid.instance.clearSelection();
 
           const pageable = this.pageableService.getPageable(loadOptions);
           pageable.filter = this.filter;
 
-          return firstValueFrom(this.movieService.list(pageable)).then(page => {
+          return firstValueFrom(this.reservationService.list(pageable)).then(page => {
             return this.pageableService.transformPage(page);
           });
         },
@@ -43,44 +41,32 @@ export class MovieComponent {
     });
   }
 
-  getSelectedMovieId(): number {
+  getSelectedreservationSeq(): number {
     return this.grid?.instance.getSelectedRowKeys()[0];
   }
 
   /** Grid Toolbar Button Events */
   search() {
-    this.movie.reload();
+    this.reservation.reload();
   }
 
-  create() {
-    this.editPopup.open('create');
-  }
-
-  update() {
-    this.editPopup.open('update', this.getSelectedMovieId());
-  }
-
-  delete() {
-    const result = confirm('<i>정말로 해당 영화를 삭제하시겠습니까?</i>', '영화 삭제');
+  delete(){
+    console.log(this.getSelectedreservationSeq());
+    const result = confirm('<i>정말로 예매를 취소하시겠습니까?</i>', '예매 취소');
     result.then(dialogResult => {
       if (dialogResult) {
-        this.movieService.delete(this.getSelectedMovieId()).subscribe({
+        this.reservationService.delete(this.getSelectedreservationSeq()).subscribe({
           next: (v) => {
-            notify('영화 삭제가 성공적으로 완료되었습니다.', 'success', 3000);
+            notify('예매 취소가 성공적으로 완료되었습니다.', 'success', 3000);
             this.search();
           },
           error: (e) => {
             console.log(e);
-            notify('영화 삭제에 실패하였습니다.', 'error', 3000);
+            notify('예매 취소에 실패하였습니다.', 'error', 3000);
           }
         });
       }
     });
-  }
-
-  /** Edit Popup Events */
-  onSaved(movie: Movie) {
-    this.search();
   }
 
 }

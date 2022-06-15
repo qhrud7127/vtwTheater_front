@@ -1,8 +1,8 @@
 <dx-popup
   [width]="500"
-  [height]="500"
+  [height]="300"
   [showTitle]="true"
-  [title]="isCreateMode() ? '직원 생성' : '직원 변경'"
+  [title]="isCreateMode() ? '영화관 생성' : '영화관 변경'"
   [dragEnabled]="false"
   [closeOnOutsideClick]="true"
   [showCloseButton]="true"
@@ -24,7 +24,6 @@
   >
   </dxi-toolbar-item>
   <div class="popup-edit-form" *dxTemplate="let data of 'content'">
-    <dx-validation-group>
       <div class="dx-fieldset">
         <div class="dx-fieldset-header">기본정보</div>
 
@@ -34,26 +33,14 @@
         </div>
 
         <div class="dx-field">
-          <div class="dx-field-label">이름</div>
-          <dx-text-box class="dx-field-value" [(value)]="theater.theaterNm">
-            <dx-validator>
-              <dxi-validation-rule type="required" message="이름을 입력하세요."></dxi-validation-rule>
-            </dx-validator>
-          </dx-text-box>
+          <div class="dx-field-label">영화관 명</div>
+          <dx-text-box class="dx-field-value" [(value)]="theater.theaterNm"></dx-text-box>
         </div>
 
         <div class="dx-field">
-          <div class="dx-field-label">위치</div>
-          <dx-text-box class="dx-field-value" [(value)]="theater.address">
-            <dx-validator>
-              <dxi-validation-rule type="required" message="별명을 입력하세요."></dxi-validation-rule>
-            </dx-validator>
-          </dx-text-box>
+          <div class="dx-field-label">영화관 위치</div>
+          <dx-text-box class="dx-field-value" [(value)]="theater.address"></dx-text-box>
         </div>
-        <dx-validation-summary></dx-validation-summary>
-
       </div>
-    </dx-validation-group>
-  </div>
-
+    </div>
 </dx-popup>

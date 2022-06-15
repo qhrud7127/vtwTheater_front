@@ -14,6 +14,9 @@ import {TheaterComponent} from './pages/theater/theater.component';
 import {TheaterEditComponent} from './pages/theater/edit/theater-edit.component';
 import {ScheduleComponent} from './pages/schedule/schedule.component';
 import {ScheduleEditComponent} from './pages/schedule/edit/schedule-edit.component';
+import {ReservationComponent} from './pages/reservation/reservation.component';
+import {ReservationEditComponent} from './pages/reservation/edit/reservation-edit.component';
+import {ReservationListComponent} from './pages/reservation/list/reservation-list.component';
 import {ProfileComponent} from './pages/profile/profile.component';
 import {TasksComponent} from './pages/tasks/tasks.component';
 import {DevExtremeModule} from 'devextreme-angular';
@@ -58,6 +61,16 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
+    path: 'reservation',
+    component: ReservationComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'reservationList',
+    component: ReservationListComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
     path: 'login-form',
     component: LoginFormComponent,
     canActivate: [ AuthGuardService ]
@@ -95,6 +108,9 @@ const routes: Routes = [
     TheaterEditComponent,
     ScheduleComponent,
     ScheduleEditComponent,
+    ReservationComponent,
+    ReservationEditComponent,
+    ReservationListComponent,
     ProfileComponent,
     TasksComponent,
     EmployeeComponent,

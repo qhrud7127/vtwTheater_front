@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams, HttpParamsOptions} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Pageable} from "../../../shared/services/pageable.service";
+import {Movie} from "../../movies/services/movie.service";
+import {Theater} from "../../theater/services/theater.service";
 
 export interface Schedule {
   scheduleSeq: number;
@@ -9,11 +11,12 @@ export interface Schedule {
   time : string | number | Date;
   movieId: number;
   seats: number;
+  remaining: number;
   fee: number;
 }
 
 const URL = '/dna/practice/schedule';
-const URL2 = '/dna/practice/movie';
+
 
 @Injectable()
 export class ScheduleService {
@@ -25,9 +28,13 @@ export class ScheduleService {
     return this.http.get<any>(`${URL}`, {params: params as any});
   }
 
-/*  movielist(): Observable<Schedule> {
-    return this.http.get<any>(`${URL2}`);
-  }*/
+  scheduleList(): Observable<Schedule> {
+    return this.http.get<any>(`${URL}/seqList`);
+  }
+
+  scheduleListByMovieId(movieId : number): Observable<Schedule> {
+    return this.http.get<any>(`${URL}/movieId/${movieId}`);
+  }
 
   find(scheduleSeq: number): Observable<Schedule> {
     return this.http.get<any>(`${URL}/${scheduleSeq}`);

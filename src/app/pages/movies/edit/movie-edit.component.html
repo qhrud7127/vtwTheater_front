@@ -1,8 +1,8 @@
 <dx-popup
-  [width]="500"
-  [height]="500"
+  [width]="1000"
+  [height]="700"
   [showTitle]="true"
-  [title]="isCreateMode() ? '직원 생성' : '직원 변경'"
+  [title]="isCreateMode() ? '영화 생성' : '영화 변경'"
   [dragEnabled]="false"
   [closeOnOutsideClick]="true"
   [showCloseButton]="true"
@@ -24,7 +24,6 @@
   >
   </dxi-toolbar-item>
   <div class="popup-edit-form" *dxTemplate="let data of 'content'">
-    <dx-validation-group>
       <div class="dx-fieldset">
         <div class="dx-fieldset-header">기본정보</div>
 
@@ -35,60 +34,33 @@
 
         <div class="dx-field">
           <div class="dx-field-label">제목</div>
-          <dx-text-box class="dx-field-value" [(value)]="movie.title">
-            <dx-validator>
-              <dxi-validation-rule type="required" message="이름을 입력하세요."></dxi-validation-rule>
-            </dx-validator>
-          </dx-text-box>
+          <dx-text-box class="dx-field-value" [(value)]="movie.title"></dx-text-box>
         </div>
 
         <div class="dx-field">
           <div class="dx-field-label">감독</div>
-          <dx-text-box class="dx-field-value" [(value)]="movie.director">
-            <dx-validator>
-              <dxi-validation-rule type="required" message="별명을 입력하세요."></dxi-validation-rule>
-            </dx-validator>
-          </dx-text-box>
+          <dx-text-box class="dx-field-value" [(value)]="movie.director"></dx-text-box>
         </div>
         <div class="dx-field">
           <div class="dx-field-label">출연진</div>
-          <dx-text-box class="dx-field-value" [(value)]="movie.cast">
-            <dx-validator>
-              <dxi-validation-rule type="required" message="이름을 입력하세요."></dxi-validation-rule>
-            </dx-validator>
-          </dx-text-box>
+          <dx-text-box class="dx-field-value" [(value)]="movie.cast"></dx-text-box>
         </div>
 
         <div class="dx-field">
           <div class="dx-field-label">관람등급</div>
-          <dx-text-box class="dx-field-value" [(value)]="movie.grade">
-            <dx-validator>
-              <dxi-validation-rule type="required" message="별명을 입력하세요."></dxi-validation-rule>
-            </dx-validator>
-          </dx-text-box>
+          <dx-text-box class="dx-field-value" [(value)]="movie.grade"></dx-text-box>
         </div>
         <div class="dx-field">
           <div class="dx-field-label">영화설명</div>
-          <dx-text-box class="dx-field-value" [(value)]="movie.information">
-            <dx-validator>
-              <dxi-validation-rule type="required" message="이름을 입력하세요."></dxi-validation-rule>
-            </dx-validator>
-          </dx-text-box>
+          <dx-text-box class="dx-field-value" [(value)]="movie.information"></dx-text-box>
         </div>
 
         <div class="dx-field">
           <div class="dx-field-label">상영시간</div>
-          <dx-text-box class="dx-field-value" [(value)]="movie.runningTime">
-            <dx-validator>
-              <dxi-validation-rule type="required" message="별명을 입력하세요."></dxi-validation-rule>
-            </dx-validator>
-          </dx-text-box>
+          <dx-text-box class="dx-field-value" [(value)]="movie.runningTime"></dx-text-box>
         </div>
 
-        <dx-validation-summary></dx-validation-summary>
-
       </div>
-    </dx-validation-group>
   </div>
 
 </dx-popup>

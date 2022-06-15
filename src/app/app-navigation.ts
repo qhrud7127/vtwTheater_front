@@ -1,26 +1,8 @@
 export const navigation = [
   {
-    text: 'Home',
-    path: '/home',
-    icon: 'home'
-  },
-  {
-    text: 'Examples',
-    icon: 'folder',
-    items: [
-      {
-        text: 'Profile',
-        path: '/profile'
-      },
-      {
-        text: 'Tasks',
-        path: '/tasks'
-      },
-      {
-        text: '직원 관리',
-        path: '/employee'
-      }
-    ]
+    text: '영화 예매',
+    path: '/reservation',
+    icon: 'floppy'
   },
   {
     text: '영화관 관리',
@@ -37,12 +19,11 @@ export const navigation = [
       {
         text: '스케줄 관리',
         path: '/schedule'
+      },
+      {
+        text: '예매 현황',
+        path: '/reservationList'
       }
     ]
-  },
-  {
-    text: '예매',
-    path: '/reservation',
-    icon: 'floppy'
   }
 ];

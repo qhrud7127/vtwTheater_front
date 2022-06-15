@@ -2,7 +2,7 @@
 
 <div class="list-container">
   <div class="crud-buttons">
-    <dx-text-box [(value)]="filter" class="search-bar" placeholder="이름으로 조회" (onEnterKey)="search()">
+    <dx-text-box [(value)]="filter" class="search-bar" placeholder="번호로 조회" (onEnterKey)="search()">
     </dx-text-box>
     <dx-button
       class="crud-button"
@@ -35,12 +35,13 @@
     [hoverStateEnabled]="true"
     [selectedRowKeys]="[]"
   >
-    <dxi-column dataField="scheduleSeq" dataType="number" caption="ID" [width]="100"></dxi-column>
-    <dxi-column dataField="theaterId" dataType="number" caption="theaterId"></dxi-column>
-    <dxi-column dataField="movieId" dataType="number" caption="movieId"></dxi-column>
-    <dxi-column dataField="time" dataType="datetime" caption="time"></dxi-column>
-    <dxi-column dataField="seats" dataType="number" caption="seats"></dxi-column>
-    <dxi-column dataField="fee" dataType="number" caption="fee"></dxi-column>
+    <dxi-column dataField="scheduleSeq" dataType="number" caption="번호" [width]="50"></dxi-column>
+    <dxi-column dataField="theater.theaterNm" dataType="String" caption="상영관" [width]="250"></dxi-column>
+    <dxi-column dataField="movie.title" dataType="String" caption="영화" [width]="300"></dxi-column>
+    <dxi-column dataField="time" dataType="datetime" caption="상영시간"></dxi-column>
+    <dxi-column dataField="seats" dataType="number" caption="좌석 수"></dxi-column>
+    <dxi-column dataField="remaining" dataType="number" caption="남은 좌석 수"></dxi-column>
+    <dxi-column dataField="fee" dataType="number" caption="요금" format="#,###원"></dxi-column>
     <dxo-selection mode="single"></dxo-selection>
     <dxo-paging [pageSize]="10"></dxo-paging>
     <dxo-pager

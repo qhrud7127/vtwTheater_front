@@ -5,6 +5,9 @@ import { AppComponent } from './app.component';
 import { SideNavOuterToolbarModule, SideNavInnerToolbarModule, SingleCardModule } from './layouts';
 import { FooterModule, ResetPasswordFormModule, CreateAccountFormModule, ChangePasswordFormModule, LoginFormModule } from './shared/components';
 import { AuthService, ScreenService, AppInfoService } from './shared/services';
+import { ScheduleService } from "./pages/schedule/services/schedule.service";
+import { MovieService } from "./pages/movies/services/movie.service";
+import { TheaterService } from "./pages/theater/services/theater.service";
 import { UnauthenticatedContentModule } from './unauthenticated-content';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -30,7 +33,10 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     AuthService,
     ScreenService,
-    AppInfoService
+    AppInfoService,
+    ScheduleService,
+    MovieService,
+    TheaterService
   ],
   bootstrap: [AppComponent]
 })

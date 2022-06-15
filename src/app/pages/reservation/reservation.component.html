@@ -1,0 +1,41 @@
+<h2 class="content-block">현재 상영중인 영화</h2>
+
+<div class="content-block">
+
+</div>
+
+<div class="content-block dx-card responsive-paddings">
+
+
+  <dx-tile-view
+    #movie
+    [items]="Movies"
+    [height]="750"
+    [baseItemHeight]="520"
+    [baseItemWidth]="370"
+    [baseItemWidth]="370"
+    width="100%"
+    [itemMargin]="30"
+    direction="horizontal"
+    itemTemplate="list-item"
+  >
+    <div *dxTemplate="let data of 'list-item'; let index = index">
+      <img width="100%" height="100%" src="{{data.poster}}"/>
+      <div class="String">{{data.grade}}</div>
+      <div class=""><p style="text-align: center; font-size: large;"><strong>{{data.title}}</strong></p></div>
+      <div class="">감독 : {{data.director}} </div>
+      <div class="cast" >출연진 : {{data.cast}} </div>
+      <div class="">상영시간 : {{data.runningTime}} </div>
+
+      <dx-button
+        class="reserveBtn form-button"
+        text="영화예매"
+        (onClick)="onClick(data.movieId)"
+      ></dx-button>
+
+    </div>
+  </dx-tile-view>
+
+
+</div>
+<sample-reservation-edit-popup (onSaved)="onSaved($event)"></sample-reservation-edit-popup>

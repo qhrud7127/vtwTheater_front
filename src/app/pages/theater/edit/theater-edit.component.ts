@@ -21,21 +21,21 @@ export class TheaterEditComponent {
 
   @ViewChild(DxValidationGroupComponent, {static: false}) validationGroup: DxValidationGroupComponent;
 
-  constructor(private movieService: TheaterService) {
+  constructor(private theaterService: TheaterService) {
   }
 
   open(editMode: 'create' | 'update', movieId?: number) {
     this.editMode = editMode;
 
     if (this.isUpdateMode()) {
-      this.movieService.find(movieId).subscribe({
+      this.theaterService.find(movieId).subscribe({
         next: (v) => {
           this.theater = v;
           this.popupVisible = true;
         },
         error: (e) => {
           console.log(e);
-          notify('직원 정보를 불러오는데 오류가 발생하였습니다.', 'error', 3000);
+          notify('영화관 정보를 불러오는데 오류가 발생하였습니다.', 'error', 3000);
         }
       });
     } else {
@@ -59,32 +59,28 @@ export class TheaterEditComponent {
 
   /** Popup Button Events */
   save = (e) => {
-    const result = this.validationGroup.instance.validate();
-    if (!result.isValid) {
-      return;
-    }
 
     this.popupVisible = false;
     if (this.isCreateMode()) {
-      this.movieService.create(this.theater).subscribe({
+      this.theaterService.create(this.theater).subscribe({
         next: (v) => {
-          notify('직원 생성이 성공적으로 완료되었습니다.', 'success', 3000);
+          notify('영화관 생성이 성공적으로 완료되었습니다.', 'success', 3000);
           this.onSaved.emit(v);
         },
         error: (e) => {
           console.log(e);
-          notify('직원 생성에 실패하였습니다.', 'error', 3000);
+          notify('영화관 생성에 실패하였습니다.', 'error', 3000);
         }
       });
     } else {
-      this.movieService.update(this.theater.theaterId, this.theater).subscribe({
+      this.theaterService.update(this.theater.theaterId, this.theater).subscribe({
         next: (v) => {
-          notify('직원 변경이 성공적으로 완료되었습니다.', 'success', 3000);
+          notify('영화관 변경이 성공적으로 완료되었습니다.', 'success', 3000);
           this.onSaved.emit(v);
         },
         error: (e) => {
           console.log(e);
-          notify('직원 변경에 실패하였습니다.', 'error', 3000);
+          notify('영화관 변경에 실패하였습니다.', 'error', 3000);
         }
       });
     }

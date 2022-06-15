@@ -26,6 +26,10 @@ export class MovieService {
     return this.http.get<any>(`${URL}`, {params: params as any});
   }
 
+  movieList(): Observable<Movie> {
+    return this.http.get<any>(`${URL}/seqList`);
+  }
+
   find(movieId: number): Observable<Movie> {
     return this.http.get<any>(`${URL}/${movieId}`);
   }

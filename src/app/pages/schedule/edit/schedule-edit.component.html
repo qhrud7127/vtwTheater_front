@@ -2,7 +2,7 @@
   [width]="500"
   [height]="500"
   [showTitle]="true"
-  [title]="isCreateMode() ? '직원 생성' : '직원 변경'"
+  [title]="isCreateMode() ? '영화 상영 스케줄 생성' : '영화 상영 스케줄 변경'"
   [dragEnabled]="false"
   [closeOnOutsideClick]="true"
   [showCloseButton]="true"
@@ -24,7 +24,6 @@
   >
   </dxi-toolbar-item>
   <div class="popup-edit-form" *dxTemplate="let data of 'content'">
-    <dx-validation-group>
       <div class="dx-fieldset">
         <div class="dx-fieldset-header">기본정보</div>
 
@@ -34,55 +33,32 @@
         </div>
 
         <div class="dx-field">
-          <div class="dx-field-label">movieId</div>
-          <!--<dx-number-box class="dx-field-value" [(value)]="schedule.movieId">
-            <dx-validator>
-              <dxi-validation-rule type="required" message="movieId을 입력하세요."></dxi-validation-rule>
-            </dx-validator>
-          </dx-number-box>-->
+          <div class="dx-field-label">영화</div>
           <dx-select-box class="dx-field-value"
-                         name="gender" [(value)]="schedule.movieId"
-                         [items]="genders" [searchEnabled]="true" valueExpr="code" displayExpr="text"
+                         name="movies" [(value)]="schedule.movieId"
+                         [items]= selectedMovies [searchEnabled]="true" valueExpr="movieId" displayExpr="title"
           ></dx-select-box>
         </div>
         <div class="dx-field">
-          <div class="dx-field-label">theaterId</div>
-          <dx-number-box class="dx-field-value" [(value)]="schedule.theaterId">
-            <dx-validator>
-              <dxi-validation-rule type="required" message="theaterId을 입력하세요."></dxi-validation-rule>
-            </dx-validator>
-          </dx-number-box>
+          <div class="dx-field-label">영화관</div>
+            <dx-select-box class="dx-field-value"
+                           name="movies" [(value)]="schedule.theaterId"
+                           [items]= selectedTheaters [searchEnabled]="true" valueExpr="theaterId" displayExpr="theaterNm"
+            ></dx-select-box>
         </div>
         <div class="dx-field">
-          <div class="dx-field-label">time</div>
+          <div class="dx-field-label">상영시간</div>
           <dx-date-box class="dx-field-value" type="datetime" [(value)]="schedule.time"
-                       invalidDateMessage="날짜를 올바른 형식으로 입력하세요: yyyy-MM-dd">
-            <dx-validator>
-          </dx-validator>
-          </dx-date-box>
+                       invalidDateMessage="상영시간을 올바른 형식으로 입력하세요: yyyy-MM-dd"></dx-date-box>
         </div>
         <div class="dx-field">
-          <div class="dx-field-label">seats</div>
-          <dx-number-box class="dx-field-value" [(value)]="schedule.seats">
-            <dx-validator>
-              <dxi-validation-rule type="required" message="seats을 입력하세요."></dxi-validation-rule>
-            </dx-validator>
-          </dx-number-box>
+          <div class="dx-field-label">좌석수</div>
+          <dx-number-box class="dx-field-value" [(value)]="schedule.seats"></dx-number-box>
         </div>
         <div class="dx-field">
-          <div class="dx-field-label">fee</div>
-          <dx-number-box class="dx-field-value" [(value)]="schedule.fee">
-            <dx-validator>
-              <dxi-validation-rule type="required" message="fee을 입력하세요."></dxi-validation-rule>
-            </dx-validator>
-          </dx-number-box>
+          <div class="dx-field-label">요금</div>
+          <dx-number-box class="dx-field-value" [(value)]="schedule.fee"></dx-number-box>
         </div>
-
-
-        <dx-validation-summary></dx-validation-summary>
-
       </div>
-    </dx-validation-group>
-  </div>
-
+    </div>
 </dx-popup>
