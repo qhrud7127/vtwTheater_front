@@ -64,7 +64,6 @@ export class MovieEditComponent {
   save = (e) => {
     this.popupVisible = false;
     if (this.isCreateMode()) {
-      console.log(this.movie);
       this.movieService.create(this.movie).subscribe({
         next: (v) => {
           notify('영화 생성이 성공적으로 완료되었습니다.', 'success', 3000);

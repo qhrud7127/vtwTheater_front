@@ -51,7 +51,6 @@ export class ReservationListComponent {
   }
 
   delete(){
-    console.log(this.getSelectedreservationSeq());
     const result = confirm('<i>정말로 예매를 취소하시겠습니까?</i>', '예매 취소');
     result.then(dialogResult => {
       if (dialogResult) {
