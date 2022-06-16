@@ -42,7 +42,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent,
+    component: ReservationComponent,
     canActivate: [ AuthGuardService ]
   },
   {

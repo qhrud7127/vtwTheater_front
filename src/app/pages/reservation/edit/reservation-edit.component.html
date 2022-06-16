@@ -32,12 +32,18 @@
           <div class="dx-field-value-static">{{reservation.reservationSeq}}</div>
         </div>
         <div class="dx-field">
-          <div class="dx-field-label">영화관선택</div>
+         <div class="dx-field-label">영화관선택</div>
           <dx-select-box class="dx-field-value"
-                         #Schedule
-                         name="theaters" [(value)]="reservation.scheduleSeq"
-                         [items]= selectedSchedule [searchEnabled]="true" valueExpr="scheduleSeq" displayExpr="time"
-          ></dx-select-box>
+            [dataSource]="selectedSchedule"
+            [(value)]="reservation.reservationSeq"
+            [searchEnabled]="true"
+            displayExpr="time"
+            valueExpr="scheduleSeq"
+            itemTemplate="item">
+            <div *dxTemplate="let data of 'item'">
+              <div style="display:inline-block"><p datatype="datetime">{{data.theater.theaterNm}} {{data.time}}</p></div>
+            </div>
+          </dx-select-box>
         </div>
         <div class="dx-field">
           <div class="dx-field-label">예약매수</div>
@@ -47,11 +53,11 @@
           <div class="dx-field-label">예약자명</div>
           <dx-text-box class="dx-field-value" [(value)]="reservation.name"></dx-text-box>
         </div>
-
+<!--
         <div class="dx-field">
           <div class="dx-field-label">예매비밀번호</div>
           <dx-text-box class="dx-field-value" [(value)]="reservation.password"></dx-text-box>
-        </div>
+        </div>-->
         <div class="dx-field">
           <div class="dx-field-label">휴대폰번호</div>
           <dx-text-box class="dx-field-value" [(value)]="reservation.phone"></dx-text-box>
@@ -59,7 +65,7 @@
 
         <div class="dx-field">
           <div class="dx-field-label">생년월일</div>
-          <dx-text-box class="dx-field-value" [(value)]="reservation.birth"></dx-text-box>
+          <dx-text-box class="dx-field-value" placeholder="900101" [(value)]="reservation.birth"></dx-text-box>
         </div>
       </div>
   </div>ㄴ

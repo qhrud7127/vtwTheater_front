@@ -2,11 +2,11 @@ export const navigation = [
   {
     text: '영화 예매',
     path: '/reservation',
-    icon: 'floppy'
+    icon: 'home'
   },
   {
     text: '영화관 관리',
-    icon: 'home',
+    icon: 'floppy',
     items: [
       {
         text: '영화 관리',
