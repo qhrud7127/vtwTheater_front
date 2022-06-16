@@ -25,12 +25,12 @@
     [selectedRowKeys]="[]"
   >
     <dxi-column dataField="reservationSeq" dataType="number" caption="ID" [width]="50"></dxi-column>
-    <dxi-column dataField="schedule.movie.title" dataType="string" caption="영화" [width]="450"></dxi-column>
+    <dxi-column dataField="schedule.movie.title" dataType="string" caption="영화" ></dxi-column>
     <dxi-column dataField="schedule.theater.theaterNm" dataType="string" caption="영화관" [width]="150"></dxi-column>
     <dxi-column dataField="schedule.time" dataType="datetime" caption="상영시간" [width]="200"></dxi-column>
-    <dxi-column dataField="name" dataType="string" caption="예약자명"></dxi-column>
+    <dxi-column dataField="name" dataType="string" caption="예약자명" [width]="200"></dxi-column>
     <dxi-column dataField="phone" dataType="string" caption="예약자번호"[width]="200"></dxi-column>
-    <dxi-column dataField="birth" dataType="string" caption="생년월일"></dxi-column>
+    <dxi-column dataField="birth" dataType="string" caption="생년월일"[width]="200"></dxi-column>
     <dxi-column dataField="seat" dataType="number" caption="예약매수" [width]="100"></dxi-column>
     <dxo-selection mode="single"></dxo-selection>
     <dxo-paging [pageSize]="10"></dxo-paging>
