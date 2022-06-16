@@ -101,6 +101,7 @@ export class ReservationEditComponent {
 
   /** Popup Button Events */
   save = (e) => {
+    console.log(this.reservation.reservationSeq);
     let remaining = 0;
     //잔여석 확인
     this.scheduleService.find(this.reservation.scheduleSeq).subscribe({
@@ -133,6 +134,7 @@ export class ReservationEditComponent {
   }
 
   confirm = (e) => {
+    console.log('!!!'+this.reservation.scheduleSeq);
     this.scheduleService.find(this.reservation.scheduleSeq).subscribe({
       next: (v) => {
         this.schedule = v;

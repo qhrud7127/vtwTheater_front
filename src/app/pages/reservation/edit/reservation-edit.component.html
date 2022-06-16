@@ -35,13 +35,13 @@
          <div class="dx-field-label">영화관선택</div>
           <dx-select-box class="dx-field-value"
             [dataSource]="selectedSchedule"
-            [(value)]="reservation.reservationSeq"
+            [(value)]="reservation.scheduleSeq"
             [searchEnabled]="true"
             displayExpr="time"
             valueExpr="scheduleSeq"
             itemTemplate="item">
             <div *dxTemplate="let data of 'item'">
-              <div style="display:inline-block"><p datatype="datetime">{{data.theater.theaterNm}} {{data.time}}</p></div>
+              <div style="display:inline-block">{{data.theater.theaterNm}} {{data.time}}</div>
             </div>
           </dx-select-box>
         </div>
@@ -68,6 +68,6 @@
           <dx-text-box class="dx-field-value" placeholder="900101" [(value)]="reservation.birth"></dx-text-box>
         </div>
       </div>
-  </div>ㄴ
+  </div>
 
 </dx-popup>
